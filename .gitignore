@@ -1,0 +1,48 @@
+# Secrets / credentials
+.env
+.env.*
+*.key
+*.pem
+*.pfx
+*.p12
+
+# AI CLI auth/state that may contain credentials or private conversation data
+**/auth.json
+.codex/
+.grok/
+
+# Browser / account state
+**/User Data/
+**/Default/Cookies
+**/Default/Login Data
+
+# Local machine state / VM artifacts
+*.vmrs
+*.vmcx
+*.vhd
+*.vhdx
+*.avhd
+*.avhdx
+*.dmp
+*.etl
+
+# Local backups should stay outside the repo unless intentionally sanitized
+Backups/
+backups/
+
+# Logs / temp
+*.log
+*.tmp
+*.bak
+Thumbs.db
+Desktop.ini
+
+# Editor / OS
+.vscode/settings.json
+.idea/
+.DS_Store
+
+# Explicit local-only material
+.local/
+private/
+secrets/
