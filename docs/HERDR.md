@@ -12,13 +12,14 @@ Hyper-V Saved State は VM の RAM / process state を保存しますが、外�
 
 ## 現在確認済み
 
-次のエージェントで Herdr 統合・復帰を確認しています。
+Herdr の integration / resume を確認済み:
 
 - Codex
 - OpenCode
 - Hermes
 - AGY / Antigravity CLI
-- Grok CLI
+
+Grok CLI は Herdr integration 追加まで完了しています。native session resume は今後別途確認します。
 
 ## 基本運用
 
