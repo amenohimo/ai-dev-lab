@@ -10,6 +10,8 @@ Windows 11 + Hyper-V 上に、AI エージェント／Computer Use／GUI 操作�
 
 まず現在地を知りたい場合は [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md) を参照してください。
 
+完全再現に向けて「まだ回収すべき値」を確認する場合は [`docs/REPRODUCIBILITY-AUDIT.md`](docs/REPRODUCIBILITY-AUDIT.md) を参照してください。現在の VM が生きているうちに exact Hyper-V / guest state を採取するための helper も [`scripts/inventory/`](scripts/inventory/) に置いています。
+
 ## なぜこの VM を作ったのか
 
 AI 開発では、Codex / OpenCode / AGY / Hermes / Grok など複数のエージェントを並行利用したり、AI に Windows GUI を直接操作させたりする場面が増えています。
@@ -237,9 +239,11 @@ Checkpoint
 
 - [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md) — 現在地と未解決点。将来の AI はまずここを見る
 - [`docs/SETUP.md`](docs/SETUP.md) — ゼロからの再構築手順
+- [`docs/REPRODUCIBILITY-AUDIT.md`](docs/REPRODUCIBILITY-AUDIT.md) — 完全再現に向けて未回収の値と優先度
 - [`docs/HERDR.md`](docs/HERDR.md) — Herdr / マルチエージェント構成
 - [`docs/AUDIO-AND-INPUT.md`](docs/AUDIO-AND-INPUT.md) — Remote Audio / TypeWhisper / KB16
 - [`docs/KNOWN-ISSUES.md`](docs/KNOWN-ISSUES.md) — 既知問題と切り分け記録
+- [`scripts/inventory/`](scripts/inventory/) — 現在の Hyper-V / guest state をローカル採取する helper
 
 ## 方針
 
