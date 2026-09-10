@@ -8,6 +8,8 @@ Windows 11 + Hyper-V 上に、AI エージェント／Computer Use／GUI 操作�
 >
 > 構築記録の初期基準日: 2026-09
 
+まず現在地を知りたい場合は [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md) を参照してください。
+
 ## なぜこの VM を作ったのか
 
 AI 開発では、Codex / OpenCode / AGY / Hermes / Grok など複数のエージェントを並行利用したり、AI に Windows GUI を直接操作させたりする場面が増えています。
@@ -62,13 +64,14 @@ OneDrive はこの VM では使用しません。
 
 Herdr を中心に複数エージェントを扱います。
 
-現在、少なくとも次のエージェントで Herdr のセッション復帰を確認済みです。
+Herdr の session resume を確認済み:
 
 - Codex
 - OpenCode
 - Hermes
 - AGY / Antigravity CLI
-- Grok CLI
+
+Grok CLI は Herdr integration 追加まで完了しています。resume は今後別途確認します。
 
 Grok CLI 追加手順:
 
@@ -232,6 +235,7 @@ Checkpoint
 
 ## ドキュメント
 
+- [`docs/CURRENT-STATE.md`](docs/CURRENT-STATE.md) — 現在地と未解決点。将来の AI はまずここを見る
 - [`docs/SETUP.md`](docs/SETUP.md) — ゼロからの再構築手順
 - [`docs/HERDR.md`](docs/HERDR.md) — Herdr / マルチエージェント構成
 - [`docs/AUDIO-AND-INPUT.md`](docs/AUDIO-AND-INPUT.md) — Remote Audio / TypeWhisper / KB16
