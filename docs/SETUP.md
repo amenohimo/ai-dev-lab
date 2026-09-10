@@ -91,6 +91,30 @@ Explorer 再起動またはサインアウト後、最初の確認コマンド�
 
 > OneDrive の残骸を削除するのは、ローカル Known Folder と必要ファイルを確認した後にすること。
 
+### Windows の追加セットアップ提案を無効化
+
+この VM は OneDrive / Microsoft 365 / Phone Link 等を積極的に使う構成ではないため、Windows が表示する「PC のセットアップを完了しましょう」の再表示を抑えます。
+
+現在確認した UI:
+
+```text
+設定
+ -> システム
+ -> 通知
+ -> 追加の設定
+```
+
+以下を OFF:
+
+```text
+[ ] Windows を最大限に活用し、このデバイスの設定を完了する方法を提案する
+[ ] Windows を使用する際のヒントや提案を入手する
+```
+
+この Windows build では項目名は **「追加の設定」** だった。別 build では表示名が多少変わる可能性があるため、文言の意味も合わせて確認する。
+
+フルスクリーンの「PC のセットアップを完了しましょう」が先に表示された場合は、不要な Microsoft サービス設定を進めず、いったん通知を後回しにしてデスクトップへ戻った後に上記設定を OFF にする。
+
 ## 3. 管理用ディレクトリ
 
 最初に次を作ります。
@@ -281,6 +305,7 @@ Before-SmartAppControl-Off-2026-08-27
 ```text
 [ ] Windows がローカルアカウント中心で動く
 [ ] Desktop/Documents/Pictures が OneDrive を指していない
+[ ] Windows の追加セットアップ提案を無効化している
 [ ] Git / gh / VS Code / Terminal が起動する
 [ ] Herdr が起動する
 [ ] 必要な AI CLI が Herdr から扱える
