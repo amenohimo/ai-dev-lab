@@ -33,6 +33,20 @@ Known Folder redirect removed
 remaining local remnants cleaned
 ```
 
+Windows の追加セットアップ提案は無効化済み。
+
+```text
+設定
+ -> システム
+ -> 通知
+ -> 追加の設定
+
+OFF: Windows を最大限に活用し、このデバイスの設定を完了する方法を提案する
+OFF: Windows を使用する際のヒントや提案を入手する
+```
+
+この VM では OneDrive / Microsoft 365 等の再提案を避け、ローカル中心の開発環境を維持する。
+
 ## Hyper-V checkpoint
 
 現在の重要な基準点:
