@@ -93,6 +93,12 @@ Grok の追加は README / HERDR.md を参照。
 
 ## Desktop UX
 
+### PowerToys
+
+Microsoft PowerToys を VM にインストール済み。
+
+現時点では「導入済み」であることを記録し、各 PowerToys 機能は必要になったものだけ有効化する。将来の inventory 採取時に exact version を記録する。
+
 ### CLaunch
 
 目的別ページ:
