@@ -136,6 +136,9 @@ New-Item -ItemType Directory 'C:\Dev' -Force | Out-Null
 - Visual Studio Code
 - Windows Terminal
 - Google Chrome
+- Microsoft PowerToys
+
+PowerToys は Microsoft Store 版を利用してよい。まずは本体だけ導入し、FancyZones / Keyboard Manager / PowerToys Run 等の個別機能は必要になったものだけ有効化する。
 
 確認例:
 
@@ -307,6 +310,7 @@ Before-SmartAppControl-Off-2026-08-27
 [ ] Desktop/Documents/Pictures が OneDrive を指していない
 [ ] Windows の追加セットアップ提案を無効化している
 [ ] Git / gh / VS Code / Terminal が起動する
+[ ] PowerToys がインストール済み
 [ ] Herdr が起動する
 [ ] 必要な AI CLI が Herdr から扱える
 [ ] CLaunch / Tablacus の UI が復元できる
