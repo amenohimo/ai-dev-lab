@@ -115,6 +115,44 @@ Explorer 再起動またはサインアウト後、最初の確認コマンド�
 
 フルスクリーンの「PC のセットアップを完了しましょう」が先に表示された場合は、不要な Microsoft サービス設定を進めず、いったん通知を後回しにしてデスクトップへ戻った後に上記設定を OFF にする。
 
+### Windows Update の自動更新を無効化
+
+開発中に予期しない再起動が起きると、AI エージェントや未保存の作業が中断されるため、この VM では Windows Update を手動運用にします。
+
+`gpedit.msc` を開き、次を設定:
+
+```text
+コンピューターの構成
+ -> 管理用テンプレート
+ -> Windows コンポーネント
+ -> Windows Update
+ -> エンド ユーザー エクスペリエンスの管理
+ -> 自動更新を構成する
+ -> 無効
+```
+
+適用:
+
+```powershell
+gpupdate /force
+```
+
+確認:
+
+```powershell
+reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate
+```
+
+期待値:
+
+```text
+NoAutoUpdate    REG_DWORD    0x1
+```
+
+この設定後は Windows Update を定期的に手動確認し、長時間ジョブやエージェント作業がないタイミングで更新・再起動する。
+
+> この GPO は Windows Update の自動更新に対する設定。Microsoft Store、Defender 定義、各アプリ独自 updater まで一括停止するものではない。
+
 ## 3. 管理用ディレクトリ
 
 最初に次を作ります。
@@ -309,6 +347,7 @@ Before-SmartAppControl-Off-2026-08-27
 [ ] Windows がローカルアカウント中心で動く
 [ ] Desktop/Documents/Pictures が OneDrive を指していない
 [ ] Windows の追加セットアップ提案を無効化している
+[ ] Windows Update が手動運用になっている
 [ ] Git / gh / VS Code / Terminal が起動する
 [ ] PowerToys がインストール済み
 [ ] Herdr が起動する
