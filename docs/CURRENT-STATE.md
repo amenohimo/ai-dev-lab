@@ -47,6 +47,45 @@ OFF: Windows を使用する際のヒントや提案を入手する
 
 この VM では OneDrive / Microsoft 365 等の再提案を避け、ローカル中心の開発環境を維持する。
 
+## Windows Update
+
+開発中に Windows Update 起因とみられる予期しない再起動が発生したため、VM 内では自動更新を無効化しています。
+
+設定経路:
+
+```text
+gpedit.msc
+ -> コンピューターの構成
+ -> 管理用テンプレート
+ -> Windows コンポーネント
+ -> Windows Update
+ -> エンド ユーザー エクスペリエンスの管理
+ -> 自動更新を構成する
+ -> 無効
+```
+
+適用:
+
+```powershell
+gpupdate /force
+```
+
+確認:
+
+```powershell
+reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate
+```
+
+現在の確認値:
+
+```text
+NoAutoUpdate    REG_DWORD    0x1
+```
+
+この設定では Windows Update の適用を自動任せにせず、人間が作業状況を確認して手動更新する運用とします。
+
+注意: Microsoft Store アプリ更新、Defender 定義更新、アプリ自身の updater などは Windows Update のこの GPO とは別系統です。また、手動で更新を適用した場合は再起動要求が発生し得ます。
+
 ## Hyper-V checkpoint
 
 現在の重要な基準点:
