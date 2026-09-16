@@ -86,6 +86,37 @@ NoAutoUpdate    REG_DWORD    0x1
 
 注意: Microsoft Store アプリ更新、Defender 定義更新、アプリ自身の updater などは Windows Update のこの GPO とは別系統です。また、手動で更新を適用した場合は再起動要求が発生し得ます。
 
+## PowerShell
+
+PowerShell 7.6.6 を追加インストール済み。Windows PowerShell 5.1 も削除せず共存させています。
+
+現在の運用方針:
+
+```text
+通常の対話操作・新規スクリプト : PowerShell 7 (`pwsh.exe`)
+旧スクリプト・互換性確認       : Windows PowerShell 5.1 (`powershell.exe`)
+```
+
+確認済み Windows PowerShell 5.1:
+
+```text
+Major    : 5
+Minor    : 1
+Build    : 26100
+Revision : 9444
+```
+
+PowerShell 7 は `pwsh.exe`、Windows PowerShell 5.1 は `powershell.exe` と実行ファイル名が分かれているため、必要に応じて明示的に使い分ける。
+
+確認例:
+
+```powershell
+Get-Command pwsh.exe, powershell.exe -ErrorAction SilentlyContinue |
+    Select-Object Name, Source
+```
+
+既存の launcher / script が `powershell.exe` を明示している場合は、自動的に 7 へ置き換えず、7 での動作確認後に必要なものだけ `pwsh.exe` へ変更する。
+
 ## Hyper-V checkpoint
 
 現在の重要な基準点:
