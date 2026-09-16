@@ -175,13 +175,43 @@ New-Item -ItemType Directory 'C:\Dev' -Force | Out-Null
 - Windows Terminal
 - Google Chrome
 - Microsoft PowerToys
+- PowerShell 7
 
 PowerToys は Microsoft Store 版を利用してよい。まずは本体だけ導入し、FancyZones / Keyboard Manager / PowerToys Run 等の個別機能は必要になったものだけ有効化する。
+
+### PowerShell の使い分け
+
+PowerShell 7 を追加インストールし、Windows 標準の Windows PowerShell 5.1 と共存させる。
+
+運用方針:
+
+```text
+通常の対話操作・新規スクリプト : PowerShell 7 (`pwsh.exe`)
+旧スクリプト・互換性確認       : Windows PowerShell 5.1 (`powershell.exe`)
+```
+
+現在の基準環境では PowerShell 7.6.6 を使用している。Windows PowerShell 5.1 は削除しない。
+
+両方の実行ファイルを確認:
+
+```powershell
+Get-Command pwsh.exe, powershell.exe -ErrorAction SilentlyContinue |
+    Select-Object Name, Source
+```
+
+バージョン確認:
+
+```powershell
+pwsh.exe -NoLogo -Command '$PSVersionTable.PSVersion'
+powershell.exe -NoLogo -Command '$PSVersionTable.PSVersion'
+```
+
+既存スクリプトや launcher が `powershell.exe` を明示している場合、機械的に `pwsh.exe` へ置き換えない。PowerShell 7 での動作を確認してから、必要なものだけ切り替える。
 
 確認例:
 
 ```powershell
-Get-Command git.exe, gh.exe, code.cmd, wt.exe -ErrorAction SilentlyContinue |
+Get-Command git.exe, gh.exe, code.cmd, wt.exe, pwsh.exe, powershell.exe -ErrorAction SilentlyContinue |
     Select-Object Name, Source
 ```
 
@@ -247,6 +277,8 @@ Herdr 起動例:
 ```text
 -w new new-tab --title "Herdr" powershell.exe -NoExit -Command "herdr"
 ```
+
+この Herdr launcher は現在 `powershell.exe` を明示している既存例。PowerShell 7 へ切り替える場合は Herdr の起動・resume・integration が正常に動くことを確認してから `pwsh.exe` へ変更する。
 
 CLaunch はユーザー名変更時に設定ディレクトリが分かれることがあるため、設定バックアップを残します。
 
@@ -350,6 +382,8 @@ Before-SmartAppControl-Off-2026-08-27
 [ ] Windows Update が手動運用になっている
 [ ] Git / gh / VS Code / Terminal が起動する
 [ ] PowerToys がインストール済み
+[ ] PowerShell 7 と Windows PowerShell 5.1 が共存している
+[ ] 通常作業では pwsh.exe を使い、5.1 は互換用途として残している
 [ ] Herdr が起動する
 [ ] 必要な AI CLI が Herdr から扱える
 [ ] CLaunch / Tablacus の UI が復元できる
